@@ -1,22 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\basicController;
+use App\Http\Controllers\singleActionController;
+use App\Http\Controllers\resourcesController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', function () {
-    return view('home');
-});
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/team', function () {
-    return view('team');
-});
-Route::get('/service', function () {
-    return view('service');
-});
-Route::get('/why', function () {
-    return view('why');
-});
+
+//BASIC CONTROLLER:
+
+Route::get('/', [basicController::class, 'index']);
+Route::get('/about', [basicController::class, 'about']);
+Route::get('/service', [basicController::class, 'service']);
+
+//SINGLE ACTION CONTROLLER:
+
+Route::get('/team', singleActionController::class );
+
+// RESOURCE CONTROLLER :
+Route::resource ('photo',resourcesController::class);
+?>
